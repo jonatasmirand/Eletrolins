@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ELETROLINS — Soluções elétricas residenciais, comerciais, prediais e industriais." />
+  <title>ELETROLINS | Soluções Elétricas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --yellow: #ffd000;
+      --yellow-2: #ffb800;
+      --black: #050505;
+      --black-2: #0b0b0b;
+      --panel: #121212;
+      --panel-2: #191919;
+      --white: #fff;
+      --muted: #aaa;
+      --line: rgba(255, 208, 0, .22);
+      --max: 1180px;
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: Inter, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+
+    .container {
+      width: min(100% - 40px, var(--max));
+      margin-inline: auto;
+    }
+
+    .section {
+      position: relative;
+      padding: 100px 0;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(120deg, transparent 0 70%, rgba(255,208,0,.025) 70% 70.2%, transparent 70.2%),
+        radial-gradient(circle at 90% 20%, rgba(255,208,0,.07), transparent 28%);
+    }
+
+    .eyebrow {
+      color: var(--yellow);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1, h2, h3, .logo, .nav-cta {
+      font-family: "Barlow Condensed", sans-serif;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: .95;
+      letter-spacing: -.02em;
+    }
+
+    h2 span { color: var(--yellow); }
+
+    .section-intro {
+      max-width: 620px;
+      color: #bdbdbd;
+      margin-top: 18px;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(5,5,5,.86);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 1.55rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .logo .bolt {
+      color: var(--yellow);
+      font-size: 2.2rem;
+      line-height: 1;
+      transform: skew(-10deg);
+    }
+
+    .logo small {
+      display: block;
+      color: var(--yellow);
+      font-family: Inter, sans-serif;
+      font-size: .43rem;
+      letter-spacing: .23em;
+      font-weight: 700;
+      margin-top: -3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      list-style: none;
+      font-size: .84rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: #ddd;
+      padding: 27px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 18px;
+      height: 2px;
+      background: var(--yellow);
+      transform: scaleX(0);
+      transition: .25s;
+    }
+
+    .nav-links a:hover { color: white; }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta, .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 800;
+      transition: .25s;
+    }
+
+    .nav-cta {
+      background: var(--yellow);
+      color: #050505;
+      padding: 12px 18px;
+      border-radius: 5px;
+      font-size: .85rem;
+    }
+
+    .nav-cta:hover, .btn-primary:hover {
+      background: #ffe45c;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255,208,0,.18);
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      border: 1px solid #444;
+      color: white;
+      padding: 8px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 760px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background:
+        linear-gradient(90deg, #050505 0%, rgba(5,5,5,.97) 35%, rgba(5,5,5,.55) 63%, rgba(5,5,5,.15) 100%),
+        url("https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1800&q=85") center/cover;
+      padding-top: 76px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 8%;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(transparent, var(--yellow), transparent);
+      transform: skewX(-12deg);
+      opacity: .85;
+      box-shadow: 0 0 25px rgba(255,208,0,.25);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 690px;
+    }
+
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ddd;
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-kicker b { color: var(--yellow); }
+
+    .hero h1 {
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: .84;
+      font-weight: 900;
+      letter-spacing: -.025em;
+    }
+
+    .hero h1 span { color: var(--yellow); }
+
+    .hero-text {
+      max-width: 610px;
+      color: #d0d0d0;
+      margin: 25px 0 30px;
+      font-size: 1.05rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 15px 23px;
+      border-radius: 5px;
+      font-size: .88rem;
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: #050505;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--yellow);
+      color: white;
+      background: rgba(0,0,0,.25);
+    }
+
+    .btn-outline:hover {
+      background: var(--yellow);
+      color: #050505;
+    }
+
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 42px;
+    }
+
+    .hero-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ddd;
+      font-size: .78rem;
+      font-weight: 600;
+    }
+
+    .feature-icon {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--yellow);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--yellow);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-image {
+      min-height: 520px;
+      position: relative;
+      background:
+        linear-gradient(180deg, transparent 45%, #080808),
+        url("https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=85") center/cover;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #292929;
+    }
+
+    .about-image::after {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border: 1px solid rgba(255,208,0,.45);
+      transform: translate(14px, 14px);
+    }
+
+    .about-copy p {
+      color: #b9b9b9;
+      margin: 22px 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: #333;
+      margin-top: 30px;
+      border: 1px solid #333;
+    }
+
+    .stat {
+      background: #0c0c0c;
+      padding: 22px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--yellow);
+      font: 900 2.4rem/1 "Barlow Condensed";
+    }
+
+    .stat span {
+      color: #aaa;
+      font-size: .75rem;
+      text-transform: uppercase;
+    }
+
+    /* SERVICES */
+    .services { background: #090909; }
+
+    .service-grid {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .service-card {
+      min-height: 380px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 25px;
+      overflow: hidden;
+      border: 1px solid #292929;
+      border-radius: 8px;
+      background: #111;
+      isolation: isolate;
+      transition: .3s;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-position: center;
+      background-size: cover;
+      transition: .4s;
+      filter: saturate(.55);
+    }
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(transparent 15%, rgba(0,0,0,.96) 80%);
+    }
+
+    .service-card:nth-child(1)::before { background-image: url("https://images.unsplash.com/photo-1558008258-3256797b43f3?auto=format&fit=crop&w=700&q=80"); }
+    .service-card:nth-child(2)::before { background-image: url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=80"); }
+    .service-card:nth-child(3)::before { background-image: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80"); }
+    .service-card:nth-child(4)::before { background-image: url("https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=700&q=80"); }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--yellow);
+    }
+
+    .service-card:hover::before { transform: scale(1.06); }
+
+    .service-icon {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 52px;
+      height: 52px;
+      border: 1px solid var(--yellow);
+      color: var(--yellow);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      border-radius: 50%;
+      background: rgba(0,0,0,.5);
+    }
+
+    .service-card h3 {
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: #bbb;
+      font-size: .82rem;
+      margin-bottom: 17px;
+    }
+
+    .service-card a {
+      color: var(--yellow);
+      font-size: .8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* OBJECTIVES */
+    .objectives {
+      padding: 65px 0;
+      background:
+        linear-gradient(90deg, rgba(255,208,0,.07), transparent 30%, transparent 70%, rgba(255,208,0,.04)),
+        #111;
+      border-block: 1px solid #242424;
+    }
+
+    .objective-grid {
+      display: grid;
+      grid-template-columns: 1.1fr repeat(3, 1fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .objective {
+      border-left: 1px solid #444;
+      padding-left: 28px;
+    }
+
+    .objective .big-icon {
+      color: var(--yellow);
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .objective h3 {
+      font: 800 1.35rem/1 "Barlow Condensed";
+      text-transform: uppercase;
+    }
+
+    .objective p {
+      color: #999;
+      font-size: .75rem;
+      margin-top: 8px;
+    }
+
+    /* WHY */
+    .why-grid {
+      margin-top: 55px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid #292929;
+    }
+
+    .why-card {
+      padding: 34px 26px;
+      border-right: 1px solid #292929;
+    }
+
+    .why-card:last-child { border-right: 0; }
+
+    .why-card .number {
+      color: var(--yellow);
+      font: 900 2.5rem/1 "Barlow Condensed";
+      margin-bottom: 22px;
+    }
+
+    .why-card h3 {
+      font: 800 1.5rem/1 "Barlow Condensed";
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .why-card p { color: #999; font-size: .8rem; }
+
+    /* FAQ */
+    .faq {
+      background: #090909;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .faq-item {
+      border: 1px solid #303030;
+      background: #101010;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      background: transparent;
+      border: 0;
+      padding: 20px;
+      cursor: pointer;
+      text-align: left;
+      font-weight: 700;
+    }
+
+    .faq-question span:last-child {
+      color: var(--yellow);
+      font-size: 1.3rem;
+      transition: .2s;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: .3s ease;
+      color: #999;
+      font-size: .86rem;
+      padding: 0 20px;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 180px;
+      padding-bottom: 20px;
+    }
+
+    .faq-item.active .faq-question span:last-child {
+      transform: rotate(45deg);
+    }
+
+    /* CONTACT */
+    .contact {
+      background:
+        linear-gradient(90deg, rgba(5,5,5,.97) 0%, rgba(5,5,5,.86) 50%, rgba(5,5,5,.72)),
+        url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1800&q=80") center/cover;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .contact-info p {
+      color: #aaa;
+      max-width: 470px;
+      margin: 20px 0 30px;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-detail {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .contact-detail .icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      color: #050505;
+      background: var(--yellow);
+      border-radius: 50%;
+    }
+
+    .contact-detail small {
+      display: block;
+      color: #777;
+      text-transform: uppercase;
+      font-size: .63rem;
+      font-weight: 800;
+    }
+
+    .contact-detail strong { font-size: .9rem; }
+
+    .form {
+      background: rgba(18,18,18,.92);
+      border: 1px solid #3a3a3a;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 20px 70px rgba(0,0,0,.35);
+    }
+
+    .form h3 {
+      color: var(--yellow);
+      font: 800 2rem/1 "Barlow Condensed";
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .form > p {
+      color: #888;
+      font-size: .75rem;
+      margin-bottom: 22px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+    }
+
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      color: #bbb;
+      font-size: .7rem;
+      font-weight: 700;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      color: white;
+      background: #0a0a0a;
+      border: 1px solid #373737;
+      padding: 13px 14px;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--yellow);
+      box-shadow: 0 0 0 2px rgba(255,208,0,.08);
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+    select { appearance: auto; }
+
+    .form .btn { width: 100%; margin-top: 14px; }
+
+    /* FOOTER */
+    footer {
+      background: #020202;
+      border-top: 1px solid #222;
+      padding: 55px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      gap: 35px;
+    }
+
+    footer h4 {
+      color: var(--yellow);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 15px;
+    }
+
+    footer ul { list-style: none; display: grid; gap: 7px; }
+    footer li, footer a { color: #777; font-size: .75rem; }
+    footer a:hover { color: var(--yellow); }
+
+    .footer-bottom {
+      border-top: 1px solid #1c1c1c;
+      margin-top: 40px;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      color: #555;
+      font-size: .68rem;
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: var(--yellow);
+      color: #050505;
+      padding: 13px 18px;
+      border-radius: 5px;
+      font-weight: 800;
+      font-size: .8rem;
+      transform: translateY(130px);
+      transition: .3s;
+      z-index: 300;
+    }
+
+    .toast.show { transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .nav-links { display: none; }
+      .menu-btn { display: block; }
+      .nav-cta { margin-left: auto; }
+
+      .nav.open .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        display: grid;
+        gap: 0;
+        padding: 10px 20px 20px;
+        background: #080808;
+        border-bottom: 1px solid #292929;
+      }
+
+      .nav.open .nav-links a { padding: 13px 0; }
+      .nav.open .nav-links a::after { display: none; }
+
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .objective-grid { grid-template-columns: 1fr 1fr; }
+      .objective:first-child { grid-column: 1 / -1; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-card:nth-child(2) { border-right: 0; }
+      .why-card:nth-child(-n+2) { border-bottom: 1px solid #292929; }
+      .contact-grid, .faq-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .section { padding: 75px 0; }
+
+      .nav-cta { display: none; }
+      .hero { min-height: 700px; background-position: 65% center; }
+      .hero h1 { font-size: 4rem; }
+      .hero::after { right: 4%; }
+      .hero-features { gap: 14px; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 35px; }
+      .about-image { min-height: 360px; }
+
+      .service-grid, .why-grid, .objective-grid { grid-template-columns: 1fr; }
+      .objective:first-child { grid-column: auto; }
+      .objective { border-left: 0; border-top: 1px solid #444; padding: 22px 0 0; }
+      .why-card, .why-card:nth-child(2) { border-right: 0; border-bottom: 1px solid #292929; }
+      .why-card:last-child { border-bottom: 0; }
+
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+
+      .footer-bottom { flex-direction: column; gap: 8px; }
+    }
+
+    @media (max-width: 460px) {
+      .hero h1 { font-size: 3.45rem; }
+      .buttons { flex-direction: column; }
+      .btn { width: 100%; }
+      .stats { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav" id="nav">
+    <a href="#inicio" class="logo">
+      <span class="bolt">ϟ</span>
+      <span>ELETRO<span style="color:#ffd000">LINS</span><small>SOLUÇÕES ELÉTRICAS</small></span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#empresa">A empresa</a></li>
+      <li><a href="#objetivos">Objetivos</a></li>
+      <li><a href="#porque">Por que contratar</a></li>
+      <li><a href="#duvidas">Dúvidas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+
+    <a class="nav-cta" href="#contato">⚡ Solicitar orçamento →</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-kicker">
+          INSTALAÇÃO <b>•</b> MANUTENÇÃO <b>•</b> PROJETOS
+        </div>
+
+        <h1>
+          Soluções elétricas<br>
+          com <span>segurança,</span><br>
+          <span>qualidade</span> e confiança
+        </h1>
+
+        <p class="hero-text">
+          Serviços elétricos completos para residências, comércios, condomínios e indústrias.
+          Profissionalismo, segurança e atenção aos detalhes em cada projeto.
+        </p>
+
+        <div class="buttons">
+          <a href="#contato" class="btn btn-primary">⚡ Solicitar orçamento →</a>
+          <a href="https://wa.me/5521974967586" target="_blank" class="btn btn-outline">◉ Falar no WhatsApp</a>
+        </div>
+
+        <div class="hero-features">
+          <div class="hero-feature"><span class="feature-icon">✓</span> Atendimento em toda região do RJ</div>
+          <div class="hero-feature"><span class="feature-icon">⚙</span> Equipe especializada</div>
+          <div class="hero-feature"><span class="feature-icon">✓</span> Orçamento sem compromisso</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="section" id="sobre">
+    <div class="container about-grid">
+      <div class="about-image"></div>
+
+      <div class="about-copy">
+        <div class="eyebrow">Sobre a Eletrolins</div>
+        <h2>Compromisso com a sua <span>segurança</span></h2>
+
+        <p>
+          A ELETROLINS atua com soluções elétricas para diferentes necessidades,
+          unindo experiência, qualidade, segurança e atendimento personalizado.
+        </p>
+
+        <p>
+          Nossa equipe trabalha com responsabilidade e atenção às normas técnicas,
+          buscando entregar serviços eficientes, organizados e duráveis.
+        </p>
+
+        <a href="#empresa" class="btn btn-outline">Conheça a empresa →</a>
+
+        <div class="stats">
+          <div class="stat"><strong>+100</strong><span>Projetos realizados</span></div>
+          <div class="stat"><strong>+80</strong><span>Clientes atendidos</span></div>
+          <div class="stat"><strong>+5</strong><span>Anos de experiência</span></div>
+          <div class="stat"><strong>RJ</strong><span>Região de atendimento</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="section services" id="servicos">
+    <div class="container">
+      <div class="eyebrow">Nossos serviços</div>
+      <h2>Soluções completas para <span>cada necessidade</span></h2>
+      <p class="section-intro">
+        Da instalação à manutenção, oferecemos serviços elétricos para diferentes
+        ambientes e demandas.
+      </p>
+
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="service-icon">⌂</div>
+          <h3>Residencial</h3>
+          <p>Instalações, manutenções e adequações elétricas para sua casa com segurança e praticidade.</p>
+          <a href="#contato">Saiba mais →</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">▣</div>
+          <h3>Comercial</h3>
+          <p>Soluções elétricas para lojas, escritórios e estabelecimentos comerciais.</p>
+          <a href="#contato">Saiba mais →</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">▥</div>
+          <h3>Predial</h3>
+          <p>Manutenção e instalação em condomínios e edifícios com foco em segurança.</p>
+          <a href="#contato">Saiba mais →</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">⚙</div>
+          <h3>Industrial</h3>
+          <p>Projetos e manutenção para indústrias com soluções de alta performance.</p>
+          <a href="#contato">Saiba mais →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPRESA / OBJETIVOS -->
+  <section class="objectives" id="empresa">
+    <div class="container objective-grid">
+      <div>
+        <div class="eyebrow">Nossos objetivos</div>
+        <h2>Energia para um <span>futuro mais seguro</span></h2>
+      </div>
+
+      <div class="objective">
+        <div class="big-icon">◈</div>
+        <h3>Segurança</h3>
+        <p>Seguir rigorosamente as normas técnicas, protegendo pessoas e patrimônios.</p>
+      </div>
+
+      <div class="objective" id="objetivos">
+        <div class="big-icon">✓</div>
+        <h3>Qualidade</h3>
+        <p>Entregar serviços com alto padrão de qualidade e durabilidade.</p>
+      </div>
+
+      <div class="objective">
+        <div class="big-icon">▮▮▮</div>
+        <h3>Eficiência</h3>
+        <p>Buscar soluções que otimizem o consumo de energia e reduzam custos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUE CONTRATAR -->
+  <section class="section" id="porque">
+    <div class="container">
+      <div class="eyebrow">Por que contratar</div>
+      <h2>Diferenciais que fazem a <span>diferença</span></h2>
+      <p class="section-intro">
+        Mais que serviços elétricos, oferecemos tranquilidade, segurança e um atendimento de excelência.
+      </p>
+
+      <div class="why-grid">
+        <article class="why-card">
+          <div class="number">01</div>
+          <h3>Profissionais qualificados</h3>
+          <p>Equipe experiente, responsável e em constante atualização.</p>
+        </article>
+
+        <article class="why-card">
+          <div class="number">02</div>
+          <h3>Atendimento rápido</h3>
+          <p>Agilidade no atendimento e execução dos serviços.</p>
+        </article>
+
+        <article class="why-card">
+          <div class="number">03</div>
+          <h3>Orçamento transparente</h3>
+          <p>Projetos claros, sem surpresas e com comunicação objetiva.</p>
+        </article>
+
+        <article class="why-card">
+          <div class="number">04</div>
+          <h3>Segurança e garantia</h3>
+          <p>Serviços executados com responsabilidade e conformidade técnica.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" id="duvidas">
+    <div class="container faq-grid">
+      <div>
+        <div class="eyebrow">Dúvidas frequentes</div>
+        <h2>Tire suas <span>dúvidas</span></h2>
+        <p class="section-intro">
+          Reunimos algumas das principais perguntas. Se ainda precisar de ajuda,
+          fale diretamente com nossa equipe.
+        </p>
+        <br>
+        <a href="https://wa.me/5521974967586" target="_blank" class="btn btn-outline">◉ Falar no WhatsApp →</a>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">Quais tipos de serviços a ELETROLINS realiza? <span>+</span></button>
+          <div class="faq-answer">Realizamos instalações, manutenções, adequações e soluções elétricas para ambientes residenciais, comerciais, prediais e industriais.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Vocês atendem emergências? <span>+</span></button>
+          <div class="faq-answer">Entre em contato para verificar a disponibilidade da equipe para sua necessidade e região.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Como funciona o orçamento? <span>+</span></button>
+          <div class="faq-answer">Você envia os dados do serviço pelo formulário ou WhatsApp. A equipe avalia a demanda e entra em contato para alinhar os próximos passos.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Os serviços têm garantia? <span>+</span></button>
+          <div class="faq-answer">As condições de garantia são informadas de acordo com o serviço contratado e os materiais utilizados.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Atendem em toda a região do RJ? <span>+</span></button>
+          <div class="faq-answer">Atendemos diferentes regiões do Rio de Janeiro. Consulte nossa equipe para confirmar a disponibilidade no seu endereço.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="section contact" id="contato">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <div class="eyebrow">Entre em contato</div>
+        <h2>Vamos falar sobre o seu <span>projeto?</span></h2>
+        <p>
+          Preencha o formulário ao lado ou entre em contato pelos nossos canais.
+          Será um prazer atender você.
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-detail">
+            <span class="icon">☎</span>
+            <div><small>Telefone / WhatsApp</small><strong>(21) 97496-7586</strong></div>
+          </div>
+          <div class="contact-detail">
+            <span class="icon">◎</span>
+            <div><small>Instagram</small><strong>@eletrolins</strong></div>
+          </div>
+          <div class="contact-detail">
+            <span class="icon">⌖</span>
+            <div><small>Atendimento</small><strong>Região do Rio de Janeiro</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form" id="quoteForm">
+        <h3>Solicite um orçamento</h3>
+        <p>Preencha os dados e nossa equipe entrará em contato.</p>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Nome completo*</label>
+            <input id="name" name="name" type="text" required placeholder="Seu nome">
+          </div>
+
+          <div class="field">
+            <label for="phone">Telefone / WhatsApp*</label>
+            <input id="phone" name="phone" type="tel" required placeholder="(21) 99999-9999">
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="seu@email.com">
+          </div>
+
+          <div class="field">
+            <label for="service">Tipo de serviço</label>
+            <select id="service" name="service">
+              <option value="">Selecione</option>
+              <option>Residencial</option>
+              <option>Comercial</option>
+              <option>Predial</option>
+              <option>Industrial</option>
+              <option>Instalação</option>
+              <option>Manutenção</option>
+              <option>Outro</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" placeholder="Descreva seu projeto ou sua necessidade..."></textarea>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">⚡ Enviar solicitação</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#inicio" class="logo">
+          <span class="bolt">ϟ</span>
+          <span>ELETRO<span style="color:#ffd000">LINS</span><small>SOLUÇÕES ELÉTRICAS</small></span>
+        </a>
+        <p style="color:#666;font-size:.75rem;margin-top:15px;max-width:280px;">
+          Soluções elétricas com segurança, qualidade e confiança.
+        </p>
+      </div>
+
+      <div>
+        <h4>Links rápidos</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#porque">Por que contratar</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Atendimento</h4>
+        <ul>
+          <li><a href="#duvidas">Dúvidas</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li>Rio de Janeiro - RJ</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="tel:+5521974967586">(21) 97496-7586</a></li>
+          <li><a href="https://wa.me/5521974967586" target="_blank">WhatsApp</a></li>
+          <li><a href="https://instagram.com/eletrolins" target="_blank">@eletrolins</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 ELETROLINS. Todos os direitos reservados.</span>
+      <span>Soluções elétricas com segurança, qualidade e confiança.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Solicitação preparada! Entre em contato pelo WhatsApp.</div>
+
+<script>
+  // Menu mobile
+  const nav = document.getElementById("nav");
+  const menuBtn = document.getElementById("menuBtn");
+
+  menuBtn.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => nav.classList.remove("open"));
+  });
+
+  // FAQ accordion
+  document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+      const item = button.parentElement;
+      document.querySelectorAll(".faq-item").forEach(other => {
+        if (other !== item) other.classList.remove("active");
+      });
+      item.classList.toggle("active");
+    });
+  });
+
+  // Formulário
+  const form = document.getElementById("quoteForm");
+  const toast = document.getElementById("toast");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const service = document.getElementById("service").value || "Serviço elétrico";
+    const message = document.getElementById("message").value;
+
+    const text =
+      `Olá, ELETROLINS!%0A%0A` +
+      `Gostaria de solicitar um orçamento.%0A%0A` +
+      `Nome: ${encodeURIComponent(name)}%0A` +
+      `Telefone: ${encodeURIComponent(phone)}%0A` +
+      `Serviço: ${encodeURIComponent(service)}%0A` +
+      `Mensagem: ${encodeURIComponent(message)}`;
+
+    window.open(`https://wa.me/5521974967586?text=${text}`, "_blank");
+
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3500);
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
